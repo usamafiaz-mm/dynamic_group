@@ -4,17 +4,17 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'form_builder_test.dart';
 
 void main() {
-  MyFormBuilder formBuilder = MyFormBuilder();
-  formBuilder.init();
+  // MyFormBuilder formBuilder = MyFormBuilder();
+  // formBuilder.init();
   // final order = formBuilder.getById(11) as FormControl;
-  final order = formBuilder.getById(0) as FormControl;
-  order.myMetaData;
-  order.updateValue('3');
-  print((order.value));
+  // final order = formBuilder.getById(0) as FormControl;
+  // order.myMetaData;
+  // order.updateValue('3');
+  // print((order.value));
 
-  final gender = formBuilder.getById(11) as FormControl;
-  print((gender.value));
-  print(formBuilder.root.value);
+  // final gender = formBuilder.getById(11) as FormControl;
+  // print((gender.value));
+  // print(formBuilder.root.value);
   runApp(const MyApp());
 }
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
       home: MyHomePage(),
     );
@@ -50,10 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     MyFormBuilder formBuilder = MyFormBuilder();
     root = formBuilder.init();
-    // gender = formBuilder.getById(11);
-    // gender.valueChanges.listen((event) {
-    //   print(event);
-    // });
+    gender = formBuilder.getById(13) as FormControl;
+    gender.valueChanges.listen((event) {
+      print("event" + event.toString());
+    });
     super.initState();
   }
 
@@ -125,6 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             .controls[1] as FormGroup)
                         .control("total") as FormControl),
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.pinkAccent,
+                        fixedSize: Size(MediaQuery.of(context).size.width, 20)),
                     onPressed: () {
                       print(root.value);
                     },
@@ -133,9 +136,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
       ),
     );
   }

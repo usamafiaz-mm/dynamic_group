@@ -48,6 +48,8 @@ class MyFormBuilder {
 
   void addControl(String name, dynamic control, FormGroup parent) {
     parent.addAll({name: control});
+    print(id);
+    print(name);
     list.add({"id": id, "reference": control});
     id += 1;
   }
